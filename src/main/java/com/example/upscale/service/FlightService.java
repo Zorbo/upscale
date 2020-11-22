@@ -65,7 +65,9 @@ public class FlightService {
         return airlineList
             .stream()
             .filter(airline -> airLineName.equalsIgnoreCase(airline.getName()))
-            .findFirst().orElseThrow(() -> new AirlineException("AIRLINE IS NOT EXISTING: " + airLineName)).getFlights();
+            .findFirst()
+            .orElseThrow(() -> new AirlineException("AIRLINE IS NOT EXISTING: " + airLineName))
+            .getFlights();
     }
 
     /**
@@ -98,18 +100,20 @@ public class FlightService {
     }
 
     /**
+     * Get the shortest flight by some specifications
      *
-     * @param airline
-     * @return
+     * @param airline the specific airline
+     * @return the result
      */
     public Map<String, String> getShortestFlightByAirlines(String airline) {
         Map<String, String> result = new HashMap<>();
         for (Flight flight : getFlightsByAirLines(airline)) {
             for (Map.Entry<City, City> entry : flight.getDestinations().entrySet()) {
                 if (entry.getKey().getName().equals(OSLO) && entry.getValue().getName().equals(LONDON)) {
-                    result.put("With " + airline + " the distance Oslo to London is:", "" + flight.getDistance() + "km");
+                    result.put("With " + airline + " the distance Oslo to London is:",
+                               "" + flight.getDistance() + "km");
                 } else {
-                    result.put(airline + " don't have any direct flight ",OSLO + " to " + LONDON);
+                    result.put(airline + " don't have any direct flight ", OSLO + " to " + LONDON);
                 }
                 return result;
             }
