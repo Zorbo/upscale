@@ -37,9 +37,11 @@ public class UpscaleApplication implements CommandLineRunner {
         System.out.println("FLIGHTS TO DESTINATION LONDON: " + flightService.getFlightsByDestination(null, "London"));
         System.out.println("\n");
         System.out.println("SHORTEST FLIGHT DISTANCE OSLO TO LONDON " + flightService.getShortestFlightByAirlines("Ryan Air"));
-
-//        System.out.println("FLIGHTS: " + flightService.getFlights());
-//        System.out.println("CITIES: " + flightService.getCities());
+        System.out.println("\n");
+        System.out.println("FLIGHTS: " + flightService.getFlights());
+        System.out.println("\n");
+        System.out.println("CITIES: " + flightService.getCities());
+        System.out.println("\n");
         System.out.println("AIRLINES: " + flightService.getAirlines());
     }
 }
